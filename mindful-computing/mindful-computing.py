@@ -25,7 +25,7 @@ print(t.cyan_bold("How are you feeling today?"))
 say("How are you feeling today?")
 
 feel = input()
-print(t.cyan_bold("I am glad you are feeling "+feel))
+print(t.cyan_bold("I am glad you are feeling "+feel+"."))
 say("I am glad that you are feeling "+ feel)
 
 print(t.cyan_bold("What will you do on this machine?"))
