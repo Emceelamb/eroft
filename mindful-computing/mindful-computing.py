@@ -4,7 +4,8 @@ from time import sleep
 import os
 
 t = Terminal()
-
+height = t.height
+width = t.width
 def tod():
     currentTime = datetime.datetime.now()
     if currentTime.hour < 12:
@@ -17,29 +18,51 @@ def tod():
 def say(msg):
     return os.system("say '"+ msg + "'")
 
-print(t.cyan_bold("Good "+ tod() +"."))
-say("Good "+tod())
+
+with t.location(20, 20):
+    print(t.cyan_bold("Good "+ tod() +"."))
+    say("Good "+tod())
 # sleep(2)
-print(t.cyan_bold("How are you feeling today?"))
+with t.location(20, 20):
+    t.clear
+    print(t.cyan_bold("How are you feeling today?"))
 # os.system("say \"How are you feeling today?\"")
-say("How are you feeling today?")
+    say("How are you feeling today?")
+with t.location(20, 21):
 
-feel = input()
-print(t.cyan_bold("I am glad you are feeling "+feel+"."))
-say("I am glad that you are feeling "+ feel)
+    feel = input()
+    
+    
+with t.location(20, 20):
+    
+    t.clear() 
+    
+    print(t.cyan_bold("I am glad you are feeling "+feel+"."))
+    say("I am glad that you are feeling "+ feel)
+with t.location(20, 20):
 
-print(t.cyan_bold("What will you do on this machine?"))
-say("What will you do on this machine?")
+    t.clear() 
+    print(t.cyan_bold("What will you do on this machine?"))
+    say("What will you do on this machine?")
+with t.location(20, 21):
 
-task = input()
-print(t.cyan_bold("Why will you "+ task +"?"))
-say("Why will you "+task)
+    task = input()
+with t.location(20, 20):
+    t.clear() 
+    print(t.cyan_bold("Why will you "+ task +"?"))
+    say("Why will you "+task)
 
-reason = input()
-print(t.cyan_bold("Will "+reason+" bring you joy?"))
-say("Will "+reason+" bring you joy?")
+with t.location(20, 21):
+    reason = input()
+with t.location(20, 20):
+    t.clear() 
+    print(t.cyan_bold("Will "+reason+" bring you joy?"))
+    say("Will "+reason+" bring you joy?")
 
-input()
-print(t.cyan_bold("Please compute mindfully."))
-say("Please compute mindfully.")
+with t.location(20, 21):
+    input()
+with t.location(20, 20):
+    t.clear() 
+    print(t.cyan_bold("Please compute mindfully."))
+    say("Please compute mindfully.")
 sleep(3)
