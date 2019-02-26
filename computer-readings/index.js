@@ -12,7 +12,7 @@ var request = https.request({
   host: 'api.twitter.com',
   path: '/oauth2/token',
   headers: {
-    'User-Agent': 'Coding Defined',
+    'User-Agent': 'Nodejs',
     Authorization: 'Basic ' + Buffer.from((encodeURIComponent(getAccess.consumerKey) + ':' + encodeURIComponent(getAccess.consumerSecretKey))).toString('base64'),
     'Content-type': 'application/x-www-form-urlencoded;charset=UTF-8',
     'Content-length': 29

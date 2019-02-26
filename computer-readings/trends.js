@@ -52,7 +52,11 @@ callTwitter(trendOption, function(trendsArray){
     fullTweetPath(trendsArray[0].trends.query);
     callTwitter(tweetDetails.options, function(tweetObj){
         tweetObj.statuses.forEach(function(tweet){
-            console.log('\n' + tweet.user.screen_name + ' : ' + tweet.text);
+            //console.log('\n' + tweet.user.screen_name + ' : ' + tweet.text+'\n'+tweet.id_str);
+            console.log(`
+${tweet.user.screen_name}:${tweet.text}
+https:\/\/twitter.com/statuses/${tweet.id_str}`
+            );
         })
     })
 });
