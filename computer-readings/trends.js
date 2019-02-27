@@ -1,9 +1,13 @@
-const https = require('https');
+const https = require('http');
 
 const headers = {
     'User-Agent': 'nodejs',
     Authorization: 'bearer ' + require('./oauth.json').access_token
 };
+
+let tweetQuery={};
+let tweets=[];
+let queryTweet;
 
 function jsonHandler(response, callback){
     let json = '';
@@ -27,7 +31,7 @@ const trendOption = {
 }
 
 const tweetDetails = {
-    maxresults: 10,
+    maxresults: 2,
     resultType: 'recent',
     options: {
         host: 'api.twitter.com',
@@ -52,11 +56,69 @@ callTwitter(trendOption, function(trendsArray){
     fullTweetPath(trendsArray[0].trends.query);
     callTwitter(tweetDetails.options, function(tweetObj){
         tweetObj.statuses.forEach(function(tweet){
-            //console.log('\n' + tweet.user.screen_name + ' : ' + tweet.text+'\n'+tweet.id_str);
-            console.log(`
-${tweet.user.screen_name}:${tweet.text}
-https:\/\/twitter.com/statuses/${tweet.id_str}`
-            );
+         let twee={
+            "status": `${tweet.text}`,
+            "user": `${tweet.user.screen_name}`,
+             "url": `https:\/\/twitter.com/${tweet.id_str}`
+         }
+            tweets.push(twee)
+    queryTweet=tweets[0]
         })
+    return queryTweet
     })
 });
+
+module.exports.asktwitter=function thistweet(){
+        let queryTweet;
+    callTwitter(trendOption, function(trendsArray){
+        fullTweetPath(trendsArray[0].trends.query);
+        callTwitter(tweetDetails.options, function(tweetObj){
+            tweetObj.statuses.forEach(function(tweet){
+             let twee={
+                "status": `${tweet.text}`,
+                "user": `${tweet.user.screen_name}`,
+                 "url": `https:\/\/twitter.com/${tweet.id_str}`
+             }
+                tweets.push(twee)
+            queryTweet=tweets[0]
+            })
+        return queryTweet
+        })
+    });
+}
+
+
+function callback(response){
+    let result = '';
+
+    response.on('data', function(data){
+        result+=data;
+    })
+    response.on('end', function(){
+        console.log(result);
+    });
+}
+
+function whatsMyFortune(){
+    let payload = JSON.stringify(
+        {
+           "hi": queryTweet
+        }
+    )
+   let options={
+       host: 'localhost',
+       port: 8000,
+       path: '/tarot',
+       method: 'POST',
+       headers: {
+           'User-Agent': 'nodejs',
+           'Content-type': 'text',
+           'Content-Length': payload.length
+       }
+   };
+    let request = https.request(options, callback);
+    request.write(payload);
+    request.end();
+}
+
+setTimeout(whatsMyFortune, 100);

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <title>Hue's Light</title>
+</head>
+<body>
+    <!-- <form>
+        <input action="requestLocation()" id="cityFinder"  name="city" type="text" value="city">
+        <br><br>
+        <input type="submit">
+    </form> -->
+    <div class="container">
+        <div class="row">
+
+            <div class="twelve columns">
+                
+                <div class="main">
+                    <form action="#" method="post" name="form_name" id="form_id" class="form_class" >
+                        <h2>Javascript Form Submit Example</h2>
+                        <label>Name :</label>
+                        <input type="text" name="name" id="name" placeholder="Name" />
+                        <label>Email :</label>
+                        <input type="text" name="email" id="email" placeholder="Valid Email" />
+                        <input type="button" name="submit_id" id="btn_id" value="Submit by Id" onclick="submit_by_id()"/>
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // var cityVal = document.getElementById("cityFinder").value;
+        // function requestLocation(){
+        //     console.log(cityVal);
+        // }
+        function submit_by_id() {
+            debugger
+        var name = document.getElementById("name").value;
+        var email = document.getElementById("email").value;
+  
+
+        alert(" Name : " + name + " n Email : " + email + " n Form Id : " + document.getElementById("form_id").getAttribute("id") + "nn Form Submitted Successfully......");
+        document.getElementById("form_id").submit(); //form submission
+    }
+
+    </script>
+</body>
+</html>
