@@ -1,0 +1,38 @@
+{
+  "name": "news-editor",
+  "description": "Proxy websites and edit live with node-http-proxy and sockets.io.",
+  "tags": [
+    "http-proxy",
+    "trumpet",
+    "middleware",
+    "streaming",
+    "html"
+  ],
+  "version": "1.4.3",
+  "author": {
+    "name": "",
+    "email": ""
+  },
+  "repository": {
+    "type": "",
+    "url": ""
+  },
+  "bugs": {
+    "url": ""
+  },
+  "dependencies": {
+    "express": "^4.16.4",
+    "peer": "^0.2.10",
+    "socket.io": "^2.2.0",
+    "trumpet": "1.7.0"
+  },
+  "devDependencies": {
+    "colors": "0.6.2",
+    "connect": "^3.6.6",
+    "http-proxy": "1.15.1",
+    "tap": "^12.6.1"
+  },
+  "scripts": {
+    "test": "node test/host.js"
+  }
+}

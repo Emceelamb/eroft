@@ -1,0 +1,84 @@
+<html>
+
+<head>
+	<title>Ministry of Truth</title>
+	<meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" type="text/css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+	<script type="text/javascript">
+
+		var socket = io.connect();
+		socket.on('connect', function () {
+			console.log("Connected");
+
+		});
+		function sendit(evt, message) {
+			socket.emit(evt, message);
+		}
+		// When the window loads
+		window.addEventListener('load', function () {
+			console.log("Window Loaded");
+
+			//socket.emit('event', document.body );
+			socket.send('<h1>hi</h1>')
+
+			// Track Whatever you would like
+			//
+			// Mousemove
+			document.addEventListener('mousemove', function (e) {
+				//	console.log(e);
+				//sendit('event', {'event': 'mousemove', x: e.clientX, y: e.clientY});
+			});
+			// Click
+			document.addEventListener('click', function (e) {
+				//console.log(e);
+				//sendit('event', { 'event': 'click', x: e.clientX, y: e.clientY });
+			});
+
+			// Text
+			document.addEventListener('keypress', function (e) {
+				//console.log(e);
+//				sendit('event', { 'event': 'keypress', 'key': e.key });
+			});
+
+
+
+    $('form').submit(function(e){
+      e.preventDefault(); // prevents page reloading
+      socket.emit('headline', $('#m').val());
+        sendit('event', { 'event': 'headline','key': $('#m').val()});
+      $('#m').val('');
+        console.log($('#m').val(''));
+      return false;
+    });
+
+		});
+	</script> 
+<style>
+body{
+    background-color: black;
+    color:white;
+}
+</style>
+</head>
+
+
+<body>
+    <div class = "container">
+        <row>
+            <div class="twelve columns">
+                <h1>Ministry of Truth</h1>
+            </div>
+        </row>
+        <row>
+            <div class="twelve columns">
+                <form actions="">
+                    <input id = "m" value="Headline"  autocomplete="off" /><button id="headline-btn">Send</button>
+                </form>
+            </div>
+        </row>
+    </div>
+</body>
+
+</html>
