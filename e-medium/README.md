@@ -1,5 +1,7 @@
-# Live News Editor
-## Veillance, ITP SPRING 2019
+# Secret messages
+## EROFT, ITP SPRING 2019
 
 [Live example](https://radiant-meadow-14806.herokuapp.com/ "link to heroku") 
-[Project documentation](https://emceelamb.github.io/itp-blog/2019/03/14/Live-News-Editor.html "link to documentation")
+
+`$("main.main-content").text().indexOf('b');`
+`let first= splitAt(16)($("main.main-content").text())`
