@@ -18,7 +18,7 @@ From this experiment I believe pingback time from regular conditions  is simply 
 
 To solve this I am considering using a math based algorithm with the pingback time as a seed value, but I didn't get a chance to explore this further.
 
-**list of news hossts**:
+**list of news hosts**:
 ''' 
 www.cnn.com
 bbc.com
@@ -41,7 +41,9 @@ news.com.au
 news.yahoo.com
 news.google.com
 '''
+
 **fetch_news.py**:
+
 ''' 
 def fetchNews():
     subprocess.run(["echo", "fetching news"]);
