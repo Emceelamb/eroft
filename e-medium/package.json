@@ -23,7 +23,7 @@
   "dependencies": {
     "express": "^4.16.4",
     "peer": "^0.2.10",
-    "socket.io": "^2.2.0",
+    "socket.io": "^2.5.0",
     "trumpet": "1.7.0"
   },
   "devDependencies": {
